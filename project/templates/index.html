@@ -1,0 +1,302 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mary Telecom</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+</head>
+<body>
+
+    <!-- biggest burger block -->
+
+            <div class="burger_position_absolute" id="qwerty">
+              <p style="color:white; font-size:40px;">salam men isleyan</p>
+            </div>
+
+<header class="header">
+    <div class="container">
+        <div class="header__wrapper">
+
+            <div class="header__block">
+                <a href="/" class="header__logo">
+                    <img src="{% static 'img/logo.png' %}" alt="">
+                </a>
+            </div>
+            <!--/header__block-->
+
+            <nav class="nav">
+                <a href="#" class="nav__link active">Main</a>
+                <a href="#frame" class="nav__link">Our services</a>
+                <a href="#about" class="nav__link">About</a>
+                <a href="#" class="nav__link">Contacts</a>
+
+                <!-- burger -->
+                <div class="burger_menu" id="check">
+
+                        <div class="burger_line">
+
+                        </div>
+                        <div class="burger_line">
+                            
+                        </div>
+                        <div class="burger_line">
+                            
+                        </div>
+
+                </div>
+            </nav>
+        </div>
+        <!--/header__wrapper-->
+
+    </div>
+    <!--/container-->
+</header>
+
+<section class="intro" style="background-image:url('{% static 'img/intro_bg.jpg' %}');">
+    <div class="container">
+        <div class="intro__content">
+            <div class="intro__block">
+                <h1 class="intro__title">
+                    Doly derejede siziň islegiňiz boýunça gurnamak
+                    we ýola goýmak.
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/intro-->
+<section class="info">
+    <div class="container">
+        {% for s in settings %}
+        <div class="wrapper">
+            <div class="block__responsive">
+                <div class="info__item">
+                    <div class="info__img">
+                        <img src="{% static 'img/phone.svg' %}" alt="">
+                    </div>
+                    <h4 class="info__title">
+                        {{s.phone}}
+                    </h4>
+                    <p class="info__text">
+                        Häziriň özünde bize jaň ediň!
+                    </p>
+                </div>
+            </div>
+            <!--/info__block-->
+            <div class="block__responsive">
+                <div class="info__item">
+                    <div class="info__img">
+                        <img src="{% static 'img/mail.svg' %}" alt="">
+                    </div>
+                    <h4 class="info__title">
+                        {{s.email}}
+                    </h4>
+                    <p class="info__text">
+                        Pocta usti bilen habarlasmak
+                    </p>
+                </div>
+            </div>
+            <!--/info__block-->
+            <div class="block__responsive">
+                <div class="info__item">
+                    <div class="info__img">
+                        <img src="{% static 'img/pin.svg' %}" alt="">
+                    </div>
+                    <h4 class="info__title">
+                        {{s.addres}}
+                    </h4>
+                    <p class="info__text">
+                        Bizi kartadan tapyň
+                    </p>
+                </div>
+            </div>
+            <!--/info__block-->
+        </div>
+        {% endfor %}
+        <!--/info__wrapper-->
+    </div>
+    <!--/container-->
+</section>
+<!--/info-->
+
+<section class="section" id="frame">
+    <div class="container">
+        <h2 class="block__title">
+            BIZIŇ HYZMATLARMYZ
+        </h2>
+        <a href="#" class="block__link">
+            Hemmesini gör
+        </a>
+
+        <div class="wrapper">
+            <!--/block-->
+            {% for s in service %}
+            <div class="block">
+                <span class="services__item">
+                    <div class="services__content" style="background-image:url('{{s.image.url}}');">
+                        <div class="services__content-item">
+                            <p class="services__text">
+                                {{s.description}}
+                            </p>
+                        </div>
+                    </div>
+                    <h3 class="services__title">
+                        {{s.title}}
+                    </h3>
+                </span>
+            </div>
+            {% endfor %}
+            <!--/block-->
+        </div>
+        <!--/wrapper-->
+    </div>
+    <!--/container-->
+</section>
+
+<section class="section about" id="about">
+    {% for a in about %}
+    <div class="container">
+        <div class="about__wrapper">
+            <div class="about__block">
+                <h2 class="block__title text-white">
+                    {{a.title}}
+                </h2>
+                <p class="about__text" id="auto_height">
+                    {{a.description}}
+                </p>
+                <button class="about__link" id="scroll_list">
+                    Biz hakda has giňişleýin
+                </button>
+            </div>
+            <!--/about__block-->
+
+            <img src="{{a.image.url}}" alt="" class="about__img">
+        </div>
+        <!--/about__wrapper-->
+    </div>
+    {% endfor %}
+    <!--/container-->
+</section>
+
+<section class="section process">
+    <div class="container">
+        <h2 class="process__title">Mary Telecom</h2>
+        <h3 class="process__subtitle">Biziň eden proýektlerimiz</h3>
+
+        <div class="wrapper">
+            {% for w in work %}
+            <div class="block">
+                <div class="process__item">
+                    <h4 class="info__title">{{w.title}}</h4>
+                    <a href="{{w.addres}}"><p class="info__text">
+                        {{w.title_addres}}
+                    </p></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="#" class="block__link" style="margin-top: 30px">
+            Hemmesini gör
+        </a>
+    </div>
+    <!--/container-->
+</section>
+
+<section class="contacts">
+    <div class="container">
+        <h2 class="block__title text-white">
+            Contact us
+        </h2>
+        <form class="contacts__form" action="">
+            <div class="form__row">
+                <div class="form__group">
+                    <input type="text" class="input"  placeholder=" ">
+                    <label for="" class="label">
+                        Name
+                    </label>
+                </div>
+                <div class="form__group">
+                    <input type="text" class="input" placeholder=" ">
+                    <label for="" class="label">
+                        Last name
+                    </label>
+                </div>
+            </div>
+            <!--/form__row-->
+            <div class="form__row">
+                <div class="form__group">
+                    <input type="email" class="input" placeholder=" ">
+                    <label for="" class="label">
+                        Email
+                    </label>
+                </div>
+                <div class="form__group">
+                    <input type="tel" class="input" placeholder=" ">
+                    <label for="" class="label">
+                        Phone
+                    </label>
+                </div>
+            </div>
+            <!--/form__row-->
+            <div class="form__row">
+                <div class="form__group">
+                    <textarea class="textarea" placeholder=" " name=""></textarea>
+                    <label for="" class="label">
+                        Message
+                    </label>
+                </div>
+            </div>
+            <!--/form__row-->
+            <button class="btn text-upper" type="submit">
+                Send
+            </button>
+        </form>
+        <!--/contact__form-->
+    </div>
+    <!--/container-->
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__wrapper">
+            <p class="copyright">
+                © 2021 Auto theme by Frontend Tricks
+            </p>
+            <div class="footer__soc">
+                {% for s in settings %}
+                <a href="{{s.linkeding}}" class="footer__soc-link">
+                    <img src="{% static 'img/linkedin.svg' %}" alt="">
+                </a>
+                <a href="{{s.facebook}}" class="footer__soc-link">
+                    <img src="{% static 'img/facebook.svg' %}" alt="">
+                </a>
+                <a href="{{s.instagram}}" target="_blank" class="footer__soc-link">
+                    <img src="{% static 'img/instagram.svg' %}" alt="">
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+check.onclick = function() {
+    document.getElementById("qwerty").classList.toggle("style_display");
+}
+</script>
+
+<script>
+scroll_list.onclick = function() {
+    document.getElementById("auto_height").style.height="auto";
+
+}
+    </script>
+</body>
+</html>
